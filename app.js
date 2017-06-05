@@ -2,7 +2,11 @@
 import common from 'utils/index';//导入公共常用函数
 var util = require('./utils/util.js');
 var indexUrl = require('config').indexUrl; //导购登录地址
+var loginsellerUrl = require('config').loginsellerUrl; //导购登录地址
 var token = wx.getStorageSync('token');//登录令牌
+var store_id = wx.getStorageSync('store_id');//店铺ID
+var member_id = wx.getStorageSync('member_id');//会员ID
+var seller_id = wx.getStorageSync('seller_id');//登录者导购ID
 App({
   //生命周期函数--监听小程序初始化
   onLaunch: function () {
@@ -32,10 +36,12 @@ App({
       //调用登录接口
       wx.login({
         success: function (res) {
+          console.log('获取微信code：', res)
           if (res.code) {
             var code = res.code;
             wx.getUserInfo({
               success: function (res2) {
+                console.log('获取微信信息2：', res2)
                 //缓存是否失效
                 if (!token) {
                   var encryptedData = encodeURIComponent(res2.encryptedData);//一定要把加密串转成URI编码
@@ -51,8 +57,8 @@ App({
                   typeof cb == "function" && cb(that.globalData.userInfo)
                 }
               },
-              fail: function (err) {
-                console.log('获取信息失败！', res)
+              fail: function (data) {
+                console.log('获取信息失败！', data)
                 // fail
                 this.showErrMsg('获取信息失败，原因：' + err);
               }
@@ -82,14 +88,14 @@ App({
       }, // 设置请求的 header
       dataType: 'txt',
       success: function (res) {
-        //console.log('获取用户登录态失败！' , res)
+        console.log('获取用户登录态失败！' , res)
         // success
         wx.hideToast();
         if (res.error_code) {
           this.showErrMsg(res.errMsg);
         } else {
           var data = res.data.trim();
-          //console.log('获取用户登录成功！' , res)
+          console.log('获取用户登录成功！' , res)
           //this.showSucMsg('登录成功'+data);
           wx.setStorageSync('token', data);
           typeof cb == "function" && cb(userInfo)
