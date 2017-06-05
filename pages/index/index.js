@@ -108,7 +108,7 @@ Page({
       that.setData({
         userInfo: userInfo
       });
-      //
+      
     } else {
       //调用应用实例的方法获取全局数据
       app.getUserInfo(function (userInfo) {
@@ -202,7 +202,11 @@ Page({
               app.globalData.saleman_id = that.data.seller_id;
               app.globalData.saleman_member_id = that.data.member_id;
             }
-            app.showSucMsg('加载成功！');
+            //跳转商品列表页
+            wx.navigateTo({
+              url: '../goods/index'
+            })
+            //app.showSucMsg('加载成功！');
           }
         },
         fail: function (err) {

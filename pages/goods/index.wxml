@@ -1,4 +1,5 @@
 <!--pages/goods/index.wxml-->
+12312:{{goods_list.goods_id}}
 <view class="section">
 	<!-- 头部 -->
 	<view class="header">

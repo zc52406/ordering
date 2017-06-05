@@ -41,7 +41,7 @@ App({
             var code = res.code;
             wx.getUserInfo({
               success: function (res2) {
-                console.log('获取微信信息2：', res2)
+                //console.log('获取微信信息2：', res2)
                 //缓存是否失效
                 if (!token) {
                   var encryptedData = encodeURIComponent(res2.encryptedData);//一定要把加密串转成URI编码

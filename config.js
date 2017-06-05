@@ -4,6 +4,7 @@ const config = {
   indexUrl: `${host}index.php?act=index&op=index`,
   loginUrl: `${host}login.php?act=login&op=member`,
   loginsellerUrl: `${host}index.php?act=login&op=seller`,
+  goodsListUrl: `${host}index.php?act=seller_goods&op=goods_list`, //首页商品列表
   //saveMemberUrl: `${host}index.php?act=login&op=member`,
 
 }
