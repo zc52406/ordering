@@ -1,6 +1,10 @@
 // pages/goods/index.js
+var goodsListUrl = require('../../config').goodsListUrl;
+var app = new getApp();
 Page({
   data:{
+    goods_list:[],
+    goods_id:'',
     showPlaneType: '',  // 筛选面板 ‘’不展开 0排序 1拥有 2筛选
     filter:{
       // 排序筛选
@@ -9,19 +13,19 @@ Page({
         list: [
           {
             name: '默认排序',
-            id: 0
+            Number: 0
           },{
             name: '定量从高到低',
-            id: 1
+            Number: 1
           },{
             name: '定量从低到高',
-            id: 2
+            Number: 2
           },{
             name: '价格从高到低',
-            id: 3
+            Price: 3
           },{
             name: '价格从低到高',
-            id: 4
+            Price: 4
           }
         ]
       },
@@ -210,7 +214,28 @@ Page({
     })
   },
   onLoad:function(options){
+    //console.log('跳转成功：', app.globalData);
     // 页面初始化 options为页面跳转所带来的参数
+    var that = this;
+    wx.request({
+      url: goodsListUrl,
+      data:{
+        list:[],
+        token: app.globalData.token,
+        store_id: app.globalData.store_id,
+        member_id: app.globalData.member_id,
+        seller_id: app.globalData.seller_id
+      },
+      method:'post',
+      header: {
+        'content-type': 'application/x-www-form-urlencoded'
+      },
+      success: function (options){
+       
+        let data = options.data;
+        console.log('商品列表：', data);
+      }
+    })
   },
   onReady:function(){
     // 页面渲染完成

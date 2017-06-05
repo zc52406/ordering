@@ -1,10 +1,10 @@
 {
   "pages":[
+    "pages/index/index",
     "pages/goods/index",
     "pages/order/index",
     "pages/analysis/index",
     "pages/my/index",
-    "pages/index/index",
     "pages/logs/logs"
   ],
   "window":{
@@ -18,7 +18,7 @@
     "selectedColor": "#ce9100",
     "backgroundColor": "#ffffff",
     "list": [{
-      "pagePath": "pages/goods/index",
+      "pagePath": "pages/index/index",
       "text": "商品",
       "iconPath": "images/tabBar/tab-1.png",
       "selectedIconPath": "images/tabBar/tab-1-active.png"
