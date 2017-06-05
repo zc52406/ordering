@@ -283,6 +283,12 @@ page{
 .filter-plane__item{
 	border-bottom: 1px solid #959595
 }
+.filter-plane__item.open .item__hd::after{
+	transform: rotate(90deg);
+}
+.filter-plane__item.open .item__bd{
+	display: flex;
+}
 .item__hd{
 	display: flex;
 	justify-content: space-between;
@@ -299,7 +305,7 @@ page{
 	background-size: 100%;
 }
 .item__bd{
-	display: flex;
+	display: none;
 	flex-flow: row wrap;
 	padding-bottom: 18rpx;
 	padding-right: 32rpx;

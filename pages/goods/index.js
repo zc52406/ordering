@@ -67,6 +67,7 @@ Page({
           },
           {
             title: '价格区间（元）',
+            hasPriceRange: true,
             opts: [
               {
                 name: '所有',
@@ -195,6 +196,17 @@ Page({
     goodsType = goodsType == 1 ? 2 : 1;
     this.setData({
       goodsListType: goodsType
+    })
+  },
+  toggleOpt: function(e){
+    // 筛选面板 选项开关
+    let idx = e.currentTarget.dataset.idx,
+      filter = this.data.filter;
+    let isShow = filter.ft.list[idx].show;
+    filter.ft.list[idx].show = !isShow;
+
+    this.setData({
+      filter: filter
     })
   },
   onLoad:function(options){
