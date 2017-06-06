@@ -1,31 +1,40 @@
 // pages/goods/index.js
 var goodsListUrl = require('../../config').goodsListUrl;
+var goodsFilterUrl = require('../../config').goodsFilterUrl;
 var app = new getApp();
 Page({
   data:{
     goods_list:[],
+    goods_commonid:'',
+    goods_name:'',
+    goods_price:'',
     goods_id:'',
     showPlaneType: '',  // 筛选面板 ‘’不展开 0排序 1拥有 2筛选
     filter:{
-      // 排序筛选
+      // 排序筛选 key  代表排序的类别 1 默认排序 2 所有  3 陈列  4 筛选  order  代表下拉的顺序
       sort: {
         currentIdx: 0,
         list: [
           {
             name: '默认排序',
-            id: 0
+            key: 1,
+            order:0
           },{
             name: '定量从高到低',
-            id: 1
+            key: 1,
+            order:1
           },{
             name: '定量从低到高',
-            id: 2
+            key: 1,
+            order: 2
           },{
             name: '价格从高到低',
-            id: 3
+            key: 1,
+            order:3
           },{
             name: '价格从低到高',
-            id: 4
+            key: 1,
+            order: 4
           }
         ]
       },
@@ -171,27 +180,27 @@ Page({
     // 排序 拥有 面板选择
     //console.log(e);
     let dataSet = e.currentTarget.dataset,
-     filterType = dataSet.type,
-     filterIndex = dataSet.index,
-     filterId = dataSet.id;
-    console.log('测试', filterType, filterIndex);
+     order = dataSet.index,
+     key = dataSet.id;
+     //console.log('测试', key);
      wx.request({
-       url: goodsListUrl,
+       //url: goodsFilterUrl,
+       url:'https://www.zlin-e.com/imall/index.php?act=search&op=index',
        data:{
-         filterType: filterType,
-         filterIndex: filterIndex,
-         filterId: filterId,
+         //store_id:'103',
+         key: key,
+         order: order,
        },
-       method:'post',
+       method:'get',
        header:{
          'content-type':'application/x-www-form-urlencoded'
        },
        success:function(options){
-         console.log('提交返回排序数据',options)
+         console.log('提交返回排序数据', options)
        }
      });
     let filterData = this.data.filter;
-    filterData[type].currentIdx = index;
+    //filterData[type].currentIdx = index;
     this.setData({
       showPlaneType: '',
       filter: filterData
@@ -207,7 +216,10 @@ Page({
   toggleShow: function(){
     // 陈列开关
     this.setData({
-      isShowList: !this.data.isShowList
+      isShowList: !this.data.isShowList,
+      minPrice:function(e){
+        console.log('测试2', e.detail.value, );
+      }
     })
   },
   switchGoodsType: function(){
@@ -220,10 +232,12 @@ Page({
   },
   toggleOpt: function(e){
     // 筛选面板 选项开关
-    let idx = e.currentTarget.dataset.idx,
+    let index = e.currentTarget.dataset.index,
       filter = this.data.filter;
-    let isShow = filter.ft.list[idx].show;
-    filter.ft.list[idx].show = !isShow;
+    let isShow = filter.ft.list[index].show;
+    filter.ft.list[index].show = !isShow;
+    
+   
 
     this.setData({
       filter: filter
@@ -240,14 +254,17 @@ Page({
         token: app.globalData.token,
         store_id: app.globalData.store_id,
         member_id: app.globalData.member_id,
-        seller_id: app.globalData.seller_id
+        seller_id: app.globalData.seller_id,
       },
       method:'post',
       header: {
         'content-type': 'application/x-www-form-urlencoded'
       },
       success: function (res){
-        console.log('商品列表：', res.data.datas.goods_list[1]);
+        console.log('商品列表：', res.data.datas.goods_list);
+        that.setData({
+          goods_list:res.data.datas.goods_list
+        });
       }
     })
   },

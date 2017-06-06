@@ -1,6 +1,5 @@
 {
   "pages":[
-    "pages/order/index",
     "pages/index/index",
     "pages/goods/index",
     "pages/order/index",
@@ -25,7 +24,7 @@
       "selectedIconPath": "images/tabBar/tab-1-active.png"
     },
     {
-      "pagePath": "pages/order/index",
+      "pagePath": "pages/index/index",
       "text": "订单",
       "iconPath": "images/tabBar/tab-2.png",
       "selectedIconPath": "images/tabBar/tab-2-active.png"

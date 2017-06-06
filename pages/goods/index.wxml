@@ -1,4 +1,5 @@
 <!--pages/goods/index.wxml-->
+测试:{{goods_list.goods_id}}
 <view class="section">
 	<!-- 头部 -->
 	<view class="header">
@@ -27,8 +28,8 @@
 		<view class="plane" wx:if="{{showPlaneType === '0'}}">
 				<view class="plane-item"
 					wx:for="{{filter.sort.list}}" 
-					data-id="{{item.id}}" 
-					data-index="{{index}}"
+					data-id="{{item.key}}" 
+					data-index="{{item.order}}"
 					data-type="sort"
 					bindtap="selectPlaneItem">
 					{{item.name}}
@@ -51,16 +52,16 @@
 			<scroll-view scroll-y style="height:100%">
 				<!-- 商品列表 -->
 				<view wx:if="{{!isShowList}}" class="goods-list__type{{goodsListType}}">
-					<view class="goods-item" wx:for="{{goodsList}}">
-						<view class="goods-item__pic">
-							<image src="{{item.pic}}" mode="scaleToFill"></image>
-						</view>
-						<view class="goods-item__info">
-							<view class="goods-item__name">{{item.name}}</view>
-							<view class="goods-item__no">{{item.no}}</view>
-							<view class="goods-item__price">￥{{item.price}}</view>
-							<view class="goods-item__dn">{{item.dn}}</view>
-						</view>
+					<view class="goods-item" wx:for="{{goods_list}}">
+              <view class="goods-item__pic">
+                <image src="{{item.goods_image}}" mode="scaleToFill"></image>
+              </view>
+              <view class="goods-item__info">
+                <view class="goods-item__name">{{item.goods_name}}</view>
+                <view class="goods-item__no">{{item.promotion_cid}}</view>
+                <view class="goods-item__price">￥{{item.goods_price}}</view>
+                <view class="goods-item__dn">{{item.goods_tradeprice}}</view>
+              </view>
 					</view>
 				</view>
 				<!-- 陈列列表 -->
@@ -82,13 +83,13 @@
 	<view class="filter-plane" wx:if="{{showPlaneType === '2'}}">
 		<view class="filter-plane__wrap">
 			<view wx:for="{{filter.ft.list}}" class="filter-plane__item {{item.show ? 'open' : ''}}">
-				<view class="item__hd" data-idx="{{index}}" bindtap="toggleOpt">
+				<view class="item__hd" data-index="{{index}}" bindtap="toggleOpt">
 					{{item.title}}
 				</view>
 				<view wx:if="{{item.hasPriceRange}}" class="opt__range">
-					<input type="text" placeholder="最低价"/>
+					<input type="text" name="minPrice" bindblur="minPrice" placeholder="最低价"/>
 					-
-					<input type="text" placeholder="最高价"/>
+					<input type="text" name="maxPrice" bindblur="maxPrice" placeholder="最高价"/>
 				</view>
 				<view class="item__bd">
 					<view wx:for="{{item.opts}}" wx:for-index="idx" wx:for-item="opt" class="opt">{{opt.name}}</view>
