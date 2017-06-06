@@ -81,43 +81,17 @@
 	<!-- 筛选面板 -->
 	<view class="filter-plane" wx:if="{{showPlaneType === '2'}}">
 		<view class="filter-plane__wrap">
-			<view class="filter-plane__item">
-				<view class="item__hd">
-					波段
+			<view wx:for="{{filter.ft.list}}" class="filter-plane__item {{item.show ? 'open' : ''}}">
+				<view class="item__hd" data-idx="{{index}}" bindtap="toggleOpt">
+					{{item.title}}
 				</view>
-				<view class="item__bd">
-					<view class="opt">所有</view>
-				</view>
-			</view>
-			<view class="filter-plane__item">
-				<view class="item__hd">
-					商品
-				</view>
-				<view class="item__bd">
-					<view class="opt">必定款</view>
-					<view class="opt">特价款</view>
-				</view>
-			</view>
-			<view class="filter-plane__item">
-				<view class="item__hd">
-					价格区间（元）
-				</view>
-				<view class="opt__range">
+				<view wx:if="{{item.hasPriceRange}}" class="opt__range">
 					<input type="text" placeholder="最低价"/>
 					-
 					<input type="text" placeholder="最高价"/>
 				</view>
 				<view class="item__bd">
-					<view class="opt">所有</view>
-				</view>
-			</view>
-			<view class="filter-plane__item">
-				<view class="item__hd">
-					女装
-				</view>
-				<view class="item__bd">
-					<view class="opt">T恤</view>
-					<view class="opt">针织衫</view>
+					<view wx:for="{{item.opts}}" wx:for-index="idx" wx:for-item="opt" class="opt">{{opt.name}}</view>
 				</view>
 			</view>
 		</view>
