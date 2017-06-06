@@ -13,19 +13,19 @@ Page({
         list: [
           {
             name: '默认排序',
-            Number: 0
+            id: 0
           },{
             name: '定量从高到低',
-            Number: 1
+            id: 1
           },{
             name: '定量从低到高',
-            Number: 2
+            id: 2
           },{
             name: '价格从高到低',
-            Price: 3
+            id: 3
           },{
             name: '价格从低到高',
-            Price: 4
+            id: 4
           }
         ]
       },
@@ -153,7 +153,7 @@ Page({
   },
   showPlane: function(e){
     // 筛选面板开关
-    let index = e.currentTarget.dataset.idx,
+    let index = e.currentTarget.dataset.index,
       showPlaneType = this.data.showPlaneType;
 
     if(index == showPlaneType){
@@ -168,13 +168,29 @@ Page({
   },
   selectPlaneItem: function(e){
     // 排序 拥有 面板选择
+    //console.log(e);
     let dataSet = e.currentTarget.dataset,
-      type = dataSet.type,
-      index = dataSet.idx,
-      id = dataSet.id;
+     filterType = dataSet.type,
+     filterIndex = dataSet.index,
+     filterId = dataSet.id;
+    console.log('测试', filterType, filterIndex);
+     wx.request({
+       url: goodsListUrl,
+       data:{
+         filterType: filterType,
+         filterIndex: filterIndex,
+         filterId: filterId,
+       },
+       method:'post',
+       header:{
+         'content-type':'application/x-www-form-urlencoded'
+       },
+       success:function(options){
+         console.log('提交返回排序数据',options)
+       }
+     });
     let filterData = this.data.filter;
     filterData[type].currentIdx = index;
-
     this.setData({
       showPlaneType: '',
       filter: filterData
@@ -218,10 +234,8 @@ Page({
       header: {
         'content-type': 'application/x-www-form-urlencoded'
       },
-      success: function (options){
-       
-        let data = options.data;
-        console.log('商品列表：', data);
+      success: function (res){
+        console.log('商品列表：', res.data.datas.goods_list[1]);
       }
     })
   },

@@ -1,5 +1,4 @@
 <!--pages/goods/index.wxml-->
-12312:{{goods_list.goods_id}}
 <view class="section">
 	<!-- 头部 -->
 	<view class="header">
@@ -10,16 +9,16 @@
 	</view>
 	<!-- 过滤栏目 -->
 	<view class="filter-bar">
-		<view class="filter-bar__item icon-arrow" bindtap="showPlane" data-idx="0">
+		<view class="filter-bar__item icon-arrow" bindtap="showPlane" data-index="0">
 			{{filter.sort.list[filter.sort.currentIdx].name}}
 		</view>
-		<view class="filter-bar__item icon-arrow" bindtap="showPlane" data-idx="1">
+		<view class="filter-bar__item icon-arrow" bindtap="showPlane" data-index="1">
 			{{filter.has.list[filter.has.currentIdx].name}}
 		</view>
 		<view class="filter-bar__item {{isShowList ? 'active' : ''}}" bindtap="toggleShow">
 			陈列
 		</view>
-		<view class="filter-bar__item icon-filter" bindtap="showPlane" data-idx="2">
+		<view class="filter-bar__item icon-filter" bindtap="showPlane" data-index="2">
 			筛选
 		</view>
 		<view class="filter-bar__item filter-type{{goodsListType}}" bindtap="switchGoodsType">
@@ -29,7 +28,7 @@
 				<view class="plane-item"
 					wx:for="{{filter.sort.list}}" 
 					data-id="{{item.id}}" 
-					data-idx="{{index}}"
+					data-index="{{index}}"
 					data-type="sort"
 					bindtap="selectPlaneItem">
 					{{item.name}}
@@ -39,7 +38,7 @@
 				<view class="plane-item" 
 					wx:for="{{filter.has.list}}" 
 					data-id="{{item.id}}" 
-					data-idx="{{index}}"
+					data-index="{{index}}"
 					data-type="has"
 					bindtap="selectPlaneItem">
 					{{item.name}}

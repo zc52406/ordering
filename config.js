@@ -5,6 +5,7 @@ const config = {
   loginUrl: `${host}login.php?act=login&op=member`,
   loginsellerUrl: `${host}index.php?act=login&op=seller`,
   goodsListUrl: `${host}index.php?act=seller_goods&op=goods_list`, //首页商品列表
+  goodsFilterUrl: `${host}index.php?act=seller_filter_goods&op=goods_list`, //首页商品排序
   //saveMemberUrl: `${host}index.php?act=login&op=member`,
 
 }

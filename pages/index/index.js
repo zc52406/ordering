@@ -62,7 +62,7 @@ Page({
   },
   // 填写验证码
   identCode:function(e){
-    console.log(e.detail.value)
+    //console.log(e.detail.value)
     this.setData({
       identCode: e.detail.value
     });
@@ -70,13 +70,13 @@ Page({
   // 获取验证码结束
   // 获取邀请码
   saveInviteNumber: function (e) {
-    console.log(e.detail.value)
+    //console.log(e.detail.value)
     this.setData({
       saveInviteNumber: e.detail.value
     });
   },
   formSubmit: function (data) {
-    console.log(data.detail.value);
+    //console.log(data.detail.value);
     const self = this;
     wx.request({
       url: saveMemberUrl,
