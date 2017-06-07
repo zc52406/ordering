@@ -1,6 +1,7 @@
 // pages/goods/index.js
 var goodsListUrl = require('../../config').goodsListUrl;
 var goodsFilterUrl = require('../../config').goodsFilterUrl;
+var goodsUrl = require('../../config').goodsUrl;
 var app = new getApp();
 Page({
   data:{
@@ -44,13 +45,16 @@ Page({
         list: [
           {
             name: '所有',
-            id: 0
+            key: 2,
+            order:0
           },{
             name: '已定',
-            id: 1
+            key:2,
+            order:1
           },{
             name: '未定',
-            id: 2
+            key:2,
+            order:2
           }
         ]
       },
@@ -62,7 +66,8 @@ Page({
             opts: [
               {
                 name: '所有',
-                id: 0
+                key: 4,
+                order:0
               }
             ]
           },
@@ -71,10 +76,12 @@ Page({
             opts: [
               {
                 name: '必定款',
-                id: 0
+                key: 4,
+                order:1
               },{
                 name: '特价款',
-                id: 1
+                key:4,
+                order:2
               }
             ]
           },
@@ -84,7 +91,8 @@ Page({
             opts: [
               {
                 name: '所有',
-                id: 0
+                key: 4,
+                order:3
               }
             ]
           },
@@ -93,10 +101,12 @@ Page({
             opts: [
               {
                 name: 'T恤',
-                id: 0
+                key: 4,
+                order:4
               },{
                 name: '针织衫',
-                id: 1
+                key:4,
+                order:5
               }
             ]
           }

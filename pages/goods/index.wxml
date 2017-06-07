@@ -1,5 +1,4 @@
 <!--pages/goods/index.wxml-->
-测试:{{goods_list.goods_id}}
 <view class="section">
 	<!-- 头部 -->
 	<view class="header">
@@ -53,9 +52,11 @@
 				<!-- 商品列表 -->
 				<view wx:if="{{!isShowList}}" class="goods-list__type{{goodsListType}}">
 					<view class="goods-item" wx:for="{{goods_list}}">
-              <view class="goods-item__pic">
-                <image src="{{item.goods_image}}" mode="scaleToFill"></image>
-              </view>
+              <navigator url="https://www.zlin-e.com/wxapp/index.php?act=goods&op=index&goods_id={{item.goods_id}}">
+                <view class="goods-item__pic">
+                  <image src="{{item.goods_image}}" mode="scaleToFill"></image>
+                </view>
+               </navigator>
               <view class="goods-item__info">
                 <view class="goods-item__name">{{item.goods_name}}</view>
                 <view class="goods-item__no">{{item.promotion_cid}}</view>
