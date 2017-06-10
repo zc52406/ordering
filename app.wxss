@@ -9,6 +9,10 @@
 }
 
 /*reset*/
+page{
+	font-size: 30rpx;
+	color: #000;
+}
 image{
 	display: block;
 	width: 100%;

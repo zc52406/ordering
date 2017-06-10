@@ -4,6 +4,7 @@
     "pages/goods/index",
     "pages/goods/checkin",
     "pages/order/index",
+    "pages/order/manage",
     "pages/analysis/index",
     "pages/my/index",
     "pages/logs/logs"
