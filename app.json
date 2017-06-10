@@ -1,5 +1,6 @@
 {
   "pages":[
+    "pages/my/collection",
     "pages/index/index",
     "pages/goods/index",
     "pages/goods/detail",
@@ -8,6 +9,7 @@
     "pages/order/manage",
     "pages/analysis/index",
     "pages/my/index",
+    "pages/my/changePasswd",
     "pages/logs/logs"
   ],
   "window":{

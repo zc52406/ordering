@@ -23,6 +23,30 @@ image{
 .highlight{
 	color: #ce9100 !important;
 }
+.section{
+	display: flex;
+	flex-flow: column nowrap;
+	background-color: #e6e6e6;
+	height: 100%;
+}
+.header{
+	display: flex;
+	box-sizing: border-box;
+	width: 100%;
+	padding: 20rpx;
+	background-color: #ce9100;
+	justify-content: space-between;
+	align-items: center;
+	flex: 0 0 auto;
+	color: #fff;
+}
+.header-item__center{
+	flex: 1 0 auto;
+	text-align: center;
+}
+.header-item__side{
+	flex: 0 0 auto;
+}
 
 /*ui compoment*/
 .ui-card{
