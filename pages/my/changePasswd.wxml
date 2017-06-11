@@ -6,19 +6,19 @@
 		<view class="header-item__side">退出</view>
 	</view>
 	<view class="form-item">
-		<view class="form-item__icon icon2"></view>
+		<view class="form-item__icon"></view>
 		<view class="form-item__content">
 			<input type="text" placeholder="原始密码" />
 		</view>
 	</view>
 	<view class="form-item">
-		<view class="form-item__icon icon2"></view>
+		<view class="form-item__icon"></view>
 		<view class="form-item__content">
 			<input type="text" placeholder="新的密码" />
 		</view>
 	</view>
 	<view class="form-item">
-		<view class="form-item__icon icon2"></view>
+		<view class="form-item__icon"></view>
 		<view class="form-item__content">
 			<input type="text" placeholder="确认密码" />
 		</view>

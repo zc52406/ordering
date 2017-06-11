@@ -1,6 +1,6 @@
 {
   "pages":[
-    "pages/my/collection",
+    "pages/my/meeting",
     "pages/index/index",
     "pages/goods/index",
     "pages/goods/detail",
@@ -9,6 +9,7 @@
     "pages/order/manage",
     "pages/analysis/index",
     "pages/my/index",
+    "pages/my/collection",
     "pages/my/changePasswd",
     "pages/logs/logs"
   ],
