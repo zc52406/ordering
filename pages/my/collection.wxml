@@ -7,7 +7,7 @@
 		<view class="header-item__side filter-type{{goodsListType}}" bindtap="switchGoodsType"></view>
 	</view>
 	<view class="goods-list">
-		<scroll-view scroll-y style="height:100%">
+		<scroll-view scroll-y>
 			<!-- 列表 -->
 			<view class="goods-list__type{{goodsListType}}">
 				<view class="goods-item" wx:for="{{goodsList}}">
